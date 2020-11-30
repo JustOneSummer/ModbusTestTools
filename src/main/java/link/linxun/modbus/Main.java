@@ -3,6 +3,7 @@ package link.linxun.modbus;
 import com.serotonin.modbus4j.ModbusMaster;
 import com.serotonin.modbus4j.exception.ModbusInitException;
 import com.serotonin.modbus4j.exception.ModbusTransportException;
+import link.linxun.modbus.analyze.Process;
 import link.linxun.modbus.command.CommandReader;
 import link.linxun.modbus.command.ModbusCommand;
 import link.linxun.modbus.config.SerialPortConfig;
@@ -46,6 +47,8 @@ public class Main {
                 System.out.print(d);
             }
             System.out.println();
+            System.out.println("开始解析");
+            Process.pr(data);
             System.out.println("是否继续y/n");
         } while (!"Y".equals(in.next().toUpperCase()));
         ModbusRtuUtils.close(config.getPortName());
