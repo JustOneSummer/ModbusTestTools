@@ -21,12 +21,12 @@ public class SerialPortNrWrapperImpl implements SerialPortWrapper {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() {
         this.nrSerialPort.disconnect();
     }
 
     @Override
-    public void open() throws Exception {
+    public void open() {
         this.nrSerialPort = SerialPortNrManager.openPort(this.config);
     }
 

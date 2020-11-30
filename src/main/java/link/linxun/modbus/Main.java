@@ -30,7 +30,7 @@ public class Main {
         config.setStopBits(1);
         config.setParity(0);
         ModbusMaster master = ModbusRtuUtils.getMaster(config);
-        while (true) {
+        do {
             System.out.println("请输入寄存器地址：");
             int offset = in.nextInt();
             System.out.println("读取的字节数：");
@@ -46,6 +46,8 @@ public class Main {
                 System.out.print(d);
             }
             System.out.println();
-        }
+            System.out.println("是否继续y/n");
+        } while (!"Y".equals(in.next().toUpperCase()));
+        ModbusRtuUtils.close(config.getPortName());
     }
 }
