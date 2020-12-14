@@ -3,7 +3,6 @@ link\linxun\modbus\commons\NullNumberUtils.class
 link\linxun\modbus\modbus\wrapper\SerialPortNrWrapperImpl.class
 link\linxun\modbus\commons\VolatilityDataUtils.class
 link\linxun\modbus\commons\NumberUtils.class
-link\linxun\modbus\modbus\serialport\manager\SerialPortRxtxManager.class
 link\linxun\modbus\modbus\ModbusReader.class
 link\linxun\modbus\command\CommandWriter.class
 link\linxun\modbus\modbus\ModbusRtuUtils.class
@@ -13,7 +12,6 @@ link\linxun\modbus\commons\ByteUtils.class
 link\linxun\modbus\command\CommandReader.class
 link\linxun\modbus\commons\DateUtils.class
 link\linxun\modbus\commons\BigEndUtils.class
-link\linxun\modbus\modbus\wrapper\SerialPortRxtxWrapperImpl.class
 link\linxun\modbus\command\ModbusCommand$1.class
 link\linxun\modbus\config\SerialPortConfig.class
 link\linxun\modbus\Main.class

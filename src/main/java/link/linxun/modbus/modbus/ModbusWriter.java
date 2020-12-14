@@ -88,7 +88,7 @@ public class ModbusWriter {
      * @throws ModbusTransportException m
      */
     public boolean writeRegister(CommandWriter commandWriter) throws ModbusTransportException {
-        return this.writeRegister(commandWriter.getAddressId(), commandWriter.getOffset(),commandWriter.getWriteDataInt());
+        return this.writeRegister(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteDataInt());
     }
 
     /**

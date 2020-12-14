@@ -4,6 +4,7 @@ import com.serotonin.modbus4j.ModbusMaster;
 import com.serotonin.modbus4j.exception.ModbusTransportException;
 import com.serotonin.modbus4j.msg.*;
 import link.linxun.modbus.command.CommandReader;
+import link.linxun.modbus.command.CommandWriter;
 
 /**
  * 读取数据
