@@ -11,6 +11,9 @@ import link.linxun.modbus.modbus.ModbusWriter;
  * @date 2020/11/30 13:53 星期一
  */
 public class ModbusCommand {
+    private ModbusCommand() {
+    }
+
     /**
      * 写入
      *
@@ -20,21 +23,36 @@ public class ModbusCommand {
      * @throws ModbusTransportException 写异常
      */
     public static boolean commandWriter(CommandWriter writer, ModbusWriter modbusWriter) throws ModbusTransportException {
-        switch (writer.getModbusProtocol()) {
-            //05
-            case WRITE_SINGLE_COIL:
-                return modbusWriter.writeCoil(writer);
+        switch (writer.getWriter()) {
             //06
             case WRITE_SINGLE_REGISTER:
                 return modbusWriter.writeRegister(writer);
             //10
             case WRITE_MULTIPLE_REGISTERS:
                 return modbusWriter.writeRegisters(writer);
+            default:
+                throw new NullPointerException();
+        }
+    }
+
+    /**
+     * 写入
+     *
+     * @param writer       写指令{@linkplain CommandWriterCoils}
+     * @param modbusWriter 指令执行体{@linkplain ModbusWriter}
+     * @return 执行结果
+     * @throws ModbusTransportException 写异常
+     */
+    public static boolean commandWriter(CommandWriterCoils writer, ModbusWriter modbusWriter) throws ModbusTransportException {
+        switch (writer.getWriter()) {
+            //05
+            case WRITE_SINGLE_COIL:
+                return modbusWriter.writeCoil(writer);
             //0F
             case WRITE_MULTIPLE_COILS:
                 return modbusWriter.writeCoils(writer);
             default:
-                return false;
+                throw new NullPointerException();
         }
     }
 
@@ -47,7 +65,7 @@ public class ModbusCommand {
      * @throws ModbusTransportException 读取异常
      */
     public static boolean[] commandReadBooleans(CommandReader reader, ModbusReader modbusReader) throws ModbusTransportException {
-        switch (reader.getModbusProtocol()) {
+        switch (reader.getRead()) {
             //01
             case READ_COILS:
                 return modbusReader.readCoilStatus(reader);
@@ -55,7 +73,7 @@ public class ModbusCommand {
             case READ_DISCRETE_INPUTS:
                 return modbusReader.readInputStatus(reader);
             default:
-                return null;
+                throw new NullPointerException();
         }
     }
 
@@ -68,10 +86,7 @@ public class ModbusCommand {
      * @throws ModbusTransportException 读取异常
      */
     public static short[] commandReadShorts(CommandReader reader, ModbusReader modbusReader) throws ModbusTransportException {
-        if (reader == null) {
-            return null;
-        }
-        switch (reader.getModbusProtocol()) {
+        switch (reader.getRead()) {
             //03
             case READ_HOLDING_REGISTERS:
                 return modbusReader.readHoldingShort(reader);
@@ -79,7 +94,7 @@ public class ModbusCommand {
             case READ_INPUT_REGISTERS:
                 return modbusReader.readInputShort(reader);
             default:
-                return null;
+                throw new NullPointerException();
         }
     }
 }

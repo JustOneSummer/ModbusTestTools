@@ -1,7 +1,6 @@
 package link.linxun.modbus.command;
 
 
-
 import link.linxun.modbus.modbus.config.ModbusProtocol;
 
 import java.util.StringJoiner;
@@ -20,7 +19,7 @@ public class CommandReader {
     /**
      * 协议code
      */
-    private final ModbusProtocol modbusProtocol;
+    private final ModbusProtocol.ModbusProtocolRead read;
     /**
      * 寄存器起始地址
      */
@@ -30,9 +29,9 @@ public class CommandReader {
      */
     private final int numberOfBits;
 
-    public CommandReader(int addressId, ModbusProtocol modbusProtocol, int offset, int numberOfBits) {
+    public CommandReader(int addressId, ModbusProtocol.ModbusProtocolRead read, int offset, int numberOfBits) {
         this.addressId = addressId;
-        this.modbusProtocol = modbusProtocol;
+        this.read = read;
         this.offset = offset;
         this.numberOfBits = numberOfBits;
     }
@@ -41,7 +40,7 @@ public class CommandReader {
     public String toString() {
         return new StringJoiner(", ", CommandReader.class.getSimpleName() + "[", "]")
                 .add("addressId=" + addressId)
-                .add("modbusProtocol=" + modbusProtocol)
+                .add("read=" + read)
                 .add("offset=" + offset)
                 .add("numberOfBits=" + numberOfBits)
                 .toString();
@@ -51,8 +50,8 @@ public class CommandReader {
         return addressId;
     }
 
-    public ModbusProtocol getModbusProtocol() {
-        return modbusProtocol;
+    public ModbusProtocol.ModbusProtocolRead getRead() {
+        return read;
     }
 
     public int getOffset() {

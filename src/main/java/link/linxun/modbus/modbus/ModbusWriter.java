@@ -6,6 +6,7 @@ import com.serotonin.modbus4j.exception.ModbusTransportException;
 import com.serotonin.modbus4j.locator.BaseLocator;
 import com.serotonin.modbus4j.msg.*;
 import link.linxun.modbus.command.CommandWriter;
+import link.linxun.modbus.command.CommandWriterCoils;
 
 /**
  * 写入类
@@ -27,10 +28,8 @@ public class ModbusWriter {
      * @return 是否写入成功
      * @throws ModbusTransportException m
      */
-    public boolean writeCoil(CommandWriter commandWriter) throws ModbusTransportException {
-        //取尾数
-        int index = commandWriter.getWriteData().length == 1 ? 0 : commandWriter.getWriteData().length - 1;
-        return this.writeCoil(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteValue()[index]);
+    public boolean writeCoil(CommandWriterCoils commandWriter) throws ModbusTransportException {
+        return this.writeCoil(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteData()[0]);
     }
 
     /**
@@ -58,8 +57,8 @@ public class ModbusWriter {
      * @return 是否写入成功
      * @throws ModbusTransportException m
      */
-    public boolean writeCoils(CommandWriter commandWriter) throws ModbusTransportException {
-        return this.writeCoils(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteValue());
+    public boolean writeCoils(CommandWriterCoils commandWriter) throws ModbusTransportException {
+        return this.writeCoils(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteData());
     }
 
     /**
@@ -88,7 +87,7 @@ public class ModbusWriter {
      * @throws ModbusTransportException m
      */
     public boolean writeRegister(CommandWriter commandWriter) throws ModbusTransportException {
-        return this.writeRegister(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteDataInt());
+        return this.writeRegister(commandWriter.getAddressId(), commandWriter.getOffset(), commandWriter.getWriteData()[0]);
     }
 
     /**

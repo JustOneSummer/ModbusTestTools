@@ -11,6 +11,9 @@ import link.linxun.modbus.config.SerialPortConfig;
  * @date 2020/11/30 13:53 星期一
  */
 public class SerialPortNrManager {
+    private SerialPortNrManager() {
+
+    }
 
     /**
      * 打开串口
